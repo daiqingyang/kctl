@@ -4,13 +4,13 @@ import (
 	"context"
 	"flag"
 	"fmt"
-
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
+	"os"
 )
 
 func main() {
