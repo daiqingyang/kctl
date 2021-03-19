@@ -4,22 +4,27 @@ import (
 	"context"
 	"flag"
 	"fmt"
+
+	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
-	"time"
 )
 
 func main() {
 	flag.Parse()
 	defer glog.Flush()
 	glog.Info("pass")
-	for {
-		fmt.Println("hello world")
-		time.Sleep(time.Second * 1)
-	}
+
+	eng := gin.Default()
+	eng.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status": "ok",
+		})
+	})
+	eng.Run(":80")
 }
 func kTest() {
 	home := homedir.HomeDir()
