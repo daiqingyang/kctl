@@ -13,6 +13,10 @@ import (
 )
 
 func main() {
+	flag.Parse()
+	defer glog.Flush()
+	fmt.Println("hello world")
+	glog.Info("pass")
 }
 func kTest() {
 	home := homedir.HomeDir()
