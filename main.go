@@ -4,19 +4,22 @@ import (
 	"context"
 	"flag"
 	"fmt"
-
 	"github.com/golang/glog"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
+	"time"
 )
 
 func main() {
 	flag.Parse()
 	defer glog.Flush()
-	fmt.Println("hello world")
 	glog.Info("pass")
+	for {
+		fmt.Println("hello world")
+		time.Sleep(time.Second * 1)
+	}
 }
 func kTest() {
 	home := homedir.HomeDir()
