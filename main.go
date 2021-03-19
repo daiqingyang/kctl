@@ -17,11 +17,12 @@ func main() {
 	flag.Parse()
 	defer glog.Flush()
 	glog.Info("pass")
-
+	hostname, _ := os.Hostname()
 	eng := gin.Default()
 	eng.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"status": "ok",
+			"status":   "ok",
+			"hostname": hostname,
 		})
 	})
 	eng.Run(":80")
