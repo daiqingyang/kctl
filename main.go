@@ -4,16 +4,20 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/golang/glog"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/tools/clientcmd"
 	"k8s.io/client-go/util/homedir"
-	"os"
 )
 
 func main() {
+	kTest()
+}
+func runServer() {
 	flag.Parse()
 	defer glog.Flush()
 	glog.Info("pass")
@@ -40,14 +44,8 @@ func kTest() {
 	if e != nil {
 		glog.Fatal(e)
 	}
-	nodeList, e := clientSet.CoreV1().Nodes().List(context.TODO(), v1.ListOptions{})
-	if e != nil {
-		glog.Fatal(e)
-	}
-	for _, n := range nodeList.Items {
-		fmt.Println(n.Name)
-	}
-	podList, e := clientSet.CoreV1().Pods("kube-system").List(context.TODO(), v1.ListOptions{})
+
+	podList, e := clientSet.CoreV1().Pods("default").List(context.TODO(), v1.ListOptions{})
 	if e != nil {
 		glog.Fatal(e)
 	}
