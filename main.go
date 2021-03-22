@@ -16,6 +16,7 @@ import (
 
 func main() {
 	//kTest()
+	glog.Info("start")
 	go runServer()
 	select {
 	
