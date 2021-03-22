@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	kTest()
+	//kTest()
 	go runServer()
 	select {
 	
