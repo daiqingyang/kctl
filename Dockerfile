@@ -1,3 +1,5 @@
 FROM scratch
-COPY test.bin /test.bin
-CMD ["/test.bin","-logtostderr"]
+ARG commit
+ENV pro=test.${commit}
+COPY $pro /
+CMD ["/$pro","-logtostderr"]

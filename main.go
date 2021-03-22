@@ -16,6 +16,9 @@ import (
 
 func main() {
 	kTest()
+	select {
+	
+	}
 }
 func runServer() {
 	flag.Parse()

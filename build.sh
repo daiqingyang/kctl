@@ -2,7 +2,7 @@
 commit=$(git rev-parse --short HEAD)
 #git checkout -f $commit
 export CGO_ENABLED=0
-go build -o test.bin *.go
+go build -o test.${commit} *.go
 
 if test $? -ne 0 ;then
 	echo "go build error,exit"
@@ -11,7 +11,7 @@ fi
 
 echo "[Current workdir]:"$PWD
 imageName="harbor.gome.com.cn/test/gotest:$commit"
-docker build -t $imageName .
+docker build --build-arg commit=$commit -t $imageName .
 
 if test $? -ne 0 ;then
         echo "docker build error,exit"
