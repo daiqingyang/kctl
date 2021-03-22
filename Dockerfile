@@ -1,5 +1,5 @@
 FROM scratch
 ARG commit
 ENV pro=test.${commit}
-COPY $pro /
-CMD ["/test.*","-logtostderr"]
+COPY $pro /test
+CMD ["/test","-logtostderr"]
