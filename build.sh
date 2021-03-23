@@ -1,8 +1,10 @@
 #git fetch
 commit=$(git rev-parse --short HEAD)
 #git checkout -f $commit
+sed -i "s/xxx/$commit/"  main.go
 export CGO_ENABLED=0
 go build -o test.${commit} *.go
+sed -i "s/$commit/xxx/"  main.go
 
 if test $? -ne 0 ;then
 	echo "go build error,exit"

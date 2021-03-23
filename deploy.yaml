@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kubernetes.io/change-cause: harbor.gome.com.cn/test/gotest:e2041eb
+    kubernetes.io/change-cause: harbor.gome.com.cn/test/gotest:0631487
   labels:
     type: gotest
   name: gotest
@@ -26,7 +26,7 @@ spec:
         type: gotest
     spec:
       containers:
-      - image: harbor.gome.com.cn/test/gotest:e2041eb
+      - image: harbor.gome.com.cn/test/gotest:0631487
         imagePullPolicy: IfNotPresent
         livenessProbe:
           failureThreshold: 3

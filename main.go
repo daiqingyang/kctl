@@ -34,6 +34,12 @@ func runServer() {
 			"hostname": hostname,
 		})
 	})
+	eng.GET("/version",func(c *gin.Context){
+		c.JSON(200,gin.H{
+			"status":"ok",
+			"version":"xxx",
+		})
+	})
 	eng.Run(":80")
 }
 func kTest() {
